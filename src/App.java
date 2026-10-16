@@ -1,59 +1,12 @@
 //
 
-static String setMarke() {
-
-    String m = IO.readln("Märke: ");
-
-    if (m.isEmpty() || m.trim().equals(" ")) {
-        throw new IllegalArgumentException("Märke kan inte vara tomt");
-    }
-
-    return m;
-}
-
-static String setModell() {
-    String m = IO.readln("Modell: ");
-
-    if (m.isEmpty() || m.trim().equals(" ")) {
-        throw new IllegalArgumentException("Modell kan inte vara tomt");
-    }
-
-    return m;
-}
-
-static String setRegistreringsnummer() {
-    String r = IO.readln("Registreringsnummer: ");
-
-    if (r.isEmpty() || r.trim().equals(" ")) {
-        throw new IllegalArgumentException("Registreringsnummer kan inte vara tomt");
-    }
-
-    return r;
-}
-
-static int setArsmodell() {
-    String a = IO.readln("ÅrsModell: ");
-
-    try {
-        Integer.parseInt(a);
-
-        if (Integer.parseInt(a) > 1860 && Integer.parseInt(a) <= 2026) {
-            return Integer.parseInt(a);
-        } else {
-            throw new IllegalArgumentException("ÅrsModell");
-        }
-    } catch (NumberFormatException n) {
-        throw new IllegalArgumentException("ÅrsModell");
-    }
-}
-
 void main() {
 
-    Bil bil1 = new Bil(setMarke(), setModell(), setRegistreringsnummer(), setArsmodell());
+    Bil bil1 = new Bil("Mercedes", "C-klass", "GTX250", 2020);
     IO.println(bil1);
 
     try {
-        Bil bil2 = new Bil(setMarke(), setModell(), setRegistreringsnummer(), setArsmodell());
+        Bil bil2 = new Bil("Mercedes", "A-klass", "", 2019);
     } catch (IllegalArgumentException i) {
         IO.println(i.getMessage());
     }
